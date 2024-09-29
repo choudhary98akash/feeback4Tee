@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-shirt Selection with Feedback</title>
+    <style>
+        /* General reset and mobile-friendly adjustments */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            color: #000;
+        }
+
+        .tshirt-carousel {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .tshirt {
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tshirt.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .tshirt img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .swipe-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .swipe-buttons button {
+            padding: 12px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .swipe-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        #price-options {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #price-options button {
+            padding: 10px 25px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #price-options button:hover {
+            background-color: #218838;
+        }
+
+        #price-options label{
+            font-weight: 600;
+            padding: 10px;
+            background-color: rgba(54, 54, 54, 0.5);
+            border-radius: 10px;
+        }
+
+        #feedback-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #feedback-form label {
+            font-weight: bold;
+        }
+
+        button#submit-feedback {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.5; /* Initially disabled */
+            pointer-events: none; /* Initially disabled */
+        }
+
+        .thank-you-message {
+            display: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: green;
+        }
+
+        .gender-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="carousel-container">
+        <h1>Outrage T-shirt</h1>
+
+        <!-- T-shirt Image Carousel -->
+        <div class="tshirt-carousel">
+            <div class="tshirt active" id="tshirt1">
+                <img src="T1.webp" alt="T-shirt 1">
+            </div>
+            <div class="tshirt" id="tshirt2">
+                <img src="T2.webp" alt="T-shirt 2">
+            </div>
+            <div class="tshirt" id="tshirt3">
+                <img src="T3.webp" alt="T-shirt 3">
+            </div>
+            <div class="tshirt" id="tshirt4">
+                <img src="T4.webp" alt="T-shirt 4">
+            </div>
+            <div class="tshirt" id="tshirt1">
+                <img src="T5.webp" alt="T-shirt 1">
+            </div>
+            <div class="tshirt" id="tshirt2">
+                <img src="T6.webp" alt="T-shirt 2">
+            </div>
+            <div class="tshirt" id="tshirt3">
+                <img src="T7.jpg" alt="T-shirt 3">
+            </div>
+            <div class="tshirt" id="tshirt4">
+                <img src="T8.webp" alt="T-shirt 4">
+            </div>
+            <div class="tshirt" id="tshirt1">
+                <img src="T9.webp" alt="T-shirt 1">
+            </div>
+            <div class="tshirt" id="tshirt2">
+                <img src="T10.webp" alt="T-shirt 2">
+            </div>
+            <div class="tshirt" id="tshirt3">
+                <img src="T11.webp" alt="T-shirt 3">
+            </div>
+            <div class="tshirt" id="tshirt4">
+                <img src="T12.webp" alt="T-shirt 4">
+            </div>
+            <div class="tshirt" id="tshirt1">
+                <img src="T13.webp" alt="T-shirt 1">
+            </div>
+            <div class="tshirt" id="tshirt2">
+                <img src="T15.webp" alt="T-shirt 2">
+            </div>
+            <div class="tshirt" id="tshirt3">
+                <img src="T16.webp" alt="T-shirt 3">
+            </div>
+            <div class="tshirt" id="tshirt4">
+                <img src="T17.jpg" alt="T-shirt 4">
+            </div>
+            <div class="tshirt" id="tshirt1">
+                <img src="T18.webp" alt="T-shirt 1">
+            </div>
+            <div class="tshirt" id="tshirt2">
+                <img src="T19.webp" alt="T-shirt 2">
+            </div>
+            <div class="tshirt" id="tshirt3">
+                <img src="T20.webp" alt="T-shirt 3">
+            </div>
+        </div>
+
+        <!-- Swipe Buttons -->
+        <div class="swipe-buttons">
+            <button id="swipe-left">Swipe Left (No)</button>
+            <button id="swipe-right">Swipe Right (Yes)</button>
+        </div>
+
+        <!-- Price and Decision Options -->
+        <div id="price-options">
+            <label>Would you buy this at 500-600 Rupees?</label>
+            <button class="decision-button" data-decision="Definitely Yes">Definitely Yes</button>
+            <button class="decision-button" data-decision="Not Worth It">Not Worth It</button>
+            <button class="decision-button" data-decision="Cheaper Would Be Good">Cheaper Would Be Good</button>
+        </div>
+    </div>
+
+    <!-- Feedback Form -->
+    <div id="feedback-form" class="form-container">
+        <h1>I would love your feedback!</h1>
+        
+        <!-- Name Input -->
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; margin-bottom: 10px;">
+
+        <!-- Gender Selection -->
+        <div class="gender-container">
+            <label>Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="Male" onchange="checkInputs()">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" onchange="checkInputs()">
+            <label for="female">Female</label>
+        </div>
+        
+        <label style="font-size: 14px; color: #555; margin-bottom: 10px;">Share your thoughts (Optional)</label>
+        <textarea id="user-feedback" rows="4" placeholder="Share your feedback" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;"></textarea>
+        
+        <button id="submit-feedback" disabled>
+            Submit Selections and Feedback
+        </button>
+        
+        <div class="thank-you-message" id="thank-you">
+            Thank you for your feedback and selections!
+        </div>
+    </div>
+
+    <script>
+        let currentTshirt = 0;
+        const tshirts = document.querySelectorAll('.tshirt');
+        const priceOptions = document.getElementById('price-options');
+        const feedbackForm = document.getElementById('feedback-form');
+        const carouselContainer = document.getElementById('carousel-container');
+        const responses = []; // To store responses
+
+        function showTshirt(index) {
+            tshirts.forEach((tshirt, i) => {
+                tshirt.classList.toggle('active', i === index);
+            });
+        }
+
+        function handleSwipe(direction) {
+            if (direction === 'right') {
+                priceOptions.style.display = 'flex'; // Show price options as an overlay
+            } else {
+                recordResponse(false, null);
+                goToNextTshirt(); // Move to next item on "No"
+            }
+        }
+
+        function recordResponse(isInterested, decision) {
+            const currentTshirtId = currentTshirt + 1;
+            responses.push({
+                tshirt: `T${currentTshirtId}.webp`,
+                interested: isInterested,
+                decision: decision
+            });
+        }
+
+        function goToNextTshirt() {
+            priceOptions.style.display = 'none'; // Hide price options
+            currentTshirt++;
+            if (currentTshirt < tshirts.length) {
+                showTshirt(currentTshirt);
+            } else {
+                carouselContainer.style.display = 'none'; // Hide carousel when done
+                feedbackForm.style.display = 'block'; // Show feedback form
+            }
+        }
+
+        document.getElementById('swipe-left').addEventListener('click', () => {
+            handleSwipe('left');
+        });
+
+        document.getElementById('swipe-right').addEventListener('click', () => {
+            handleSwipe('right');
+        });
+
+        document.querySelectorAll('.decision-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const decision = event.target.getAttribute('data-decision');
+                recordResponse(true, decision);
+                goToNextTshirt(); // Move to the next T-shirt after decision
+            });
+        });
+
+        document.getElementById('submit-feedback').addEventListener('click', () => {
+            const userFeedback = document.getElementById('user-feedback').value;
+            const name = document.getElementById('name').value;
+            const gender = document.querySelector('input[name="gender"]:checked');
+
+            // Log the data to console
+            console.log({
+                selections: responses,
+                feedback: userFeedback,
+                name: name,
+                gender: gender ? gender.value : 'Not specified'
+            });
+            
+            // Show thank you message
+            document.getElementById('thank-you').style.display = 'block'; 
+            feedbackForm.style.display = 'none'; // Hide feedback form after submission
+        });
+
+        function checkInputs() {
+            const name = document.getElementById('name').value;
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const submitButton = document.getElementById('submit-feedback');
+
+            if (name && gender) {
+                submitButton.disabled = false;
+                submitButton.style.opacity = 1; // Make button fully visible
+                submitButton.style.pointerEvents = 'auto'; // Enable pointer events
+            } else {
+                submitButton.disabled = true;
+                submitButton.style.opacity = 0.5; // Dim the button
+                submitButton.style.pointerEvents = 'none'; // Disable pointer events
+            }
+        }
+
+        // Event listeners for input changes
+        document.getElementById('name').addEventListener('input', checkInputs);
+    </script>
+</body>
+</html>
