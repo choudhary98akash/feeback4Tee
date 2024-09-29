@@ -473,12 +473,12 @@
           const gender = document.querySelector('input[name="gender"]:checked');
 
           // Log the data to console
-          console.log({
-            selections: responses,
-            feedback: userFeedback,
-            name: name,
-            gender: gender ? gender.value : "Not specified",
-          });
+          // console.log({
+          //   selections: responses,
+          //   feedback: userFeedback,
+          //   name: name,
+          //   gender: gender ? gender.value : "Not specified",
+          // });
 
           const data = {
             selections: responses,
@@ -500,10 +500,12 @@
           )
             .then((response) => response.json())
             .then((data) => {
-              console.log("Success:", data);
+              // console.log("Success:", data);
+              alert('Form has been submitted successfully, Thankyou.')
             })
             .catch((error) => {
               console.error("Error:", error);
+              alert('Something went wrong, try again later....');
             });
           // Show thank you message
           document.getElementById("thank-you").style.display = "block";
