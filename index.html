@@ -186,49 +186,52 @@
         <div class="tshirt" id="tshirt4">
           <img src="T4.webp" alt="T-shirt 4" />
         </div>
-        <div class="tshirt" id="tshirt1">
+        <div class="tshirt" id="tshirt5">
           <img src="T5.webp" alt="T-shirt 1" />
         </div>
-        <div class="tshirt" id="tshirt2">
+        <div class="tshirt" id="tshirt6">
           <img src="T6.webp" alt="T-shirt 2" />
         </div>
-        <div class="tshirt" id="tshirt3">
+        <div class="tshirt" id="tshirt7">
           <img src="T7.jpg" alt="T-shirt 3" />
         </div>
-        <div class="tshirt" id="tshirt4">
+        <div class="tshirt" id="tshirt8">
           <img src="T8.webp" alt="T-shirt 4" />
         </div>
-        <div class="tshirt" id="tshirt1">
+        <div class="tshirt" id="tshirt9">
           <img src="T9.webp" alt="T-shirt 1" />
         </div>
-        <div class="tshirt" id="tshirt2">
+        <div class="tshirt" id="tshirt10">
           <img src="T10.webp" alt="T-shirt 2" />
         </div>
-        <div class="tshirt" id="tshirt3">
+        <div class="tshirt" id="tshirt11">
           <img src="T11.webp" alt="T-shirt 3" />
         </div>
-        <div class="tshirt" id="tshirt4">
+        <div class="tshirt" id="tshirt12">
           <img src="T12.webp" alt="T-shirt 4" />
         </div>
-        <div class="tshirt" id="tshirt1">
+        <div class="tshirt" id="tshirt13">
           <img src="T13.webp" alt="T-shirt 1" />
         </div>
-        <div class="tshirt" id="tshirt2">
+        <div class="tshirt" id="tshirt14">
+          <img src="T14.webp" alt="T-shirt 1" />
+        </div>
+        <div class="tshirt" id="tshirt15">
           <img src="T15.webp" alt="T-shirt 2" />
         </div>
-        <div class="tshirt" id="tshirt3">
+        <div class="tshirt" id="tshirt16">
           <img src="T16.webp" alt="T-shirt 3" />
         </div>
-        <div class="tshirt" id="tshirt4">
+        <div class="tshirt" id="tshirt17">
           <img src="T17.jpg" alt="T-shirt 4" />
         </div>
-        <div class="tshirt" id="tshirt1">
+        <div class="tshirt" id="tshirt18">
           <img src="T18.webp" alt="T-shirt 1" />
         </div>
-        <div class="tshirt" id="tshirt2">
+        <div class="tshirt" id="tshirt19">
           <img src="T19.webp" alt="T-shirt 2" />
         </div>
-        <div class="tshirt" id="tshirt3">
+        <div class="tshirt" id="tshirt20">
           <img src="T20.webp" alt="T-shirt 3" />
         </div>
       </div>
@@ -254,67 +257,146 @@
       </div>
     </div>
 
-    <!-- Feedback Form -->
-    <div id="feedback-form" class="form-container">
-      <h1>I would love your feedback!</h1>
+    <!-- Feedback Form 1 -->
+    <!--  -->
+
+    <div
+      id="feedback-form"
+      class="form-container"
+      style="
+        background: #f9f9f9;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: auto;
+        font-family: 'Arial', sans-serif;
+      "
+    >
+      <h2
+        style="
+          color: #333;
+          font-size: 24px;
+          margin-bottom: 20px;
+          text-align: center;
+        "
+      >
+        I truly appreciate you sticking with me to this point 😊
+      </h2>
 
       <!-- Name Input -->
-      <label for="name">Your Name:</label>
+      <label
+        for="name"
+        style="
+          display: block;
+          font-weight: 600;
+          margin-bottom: 5px;
+          text-align: left;
+        "
+        >Your Name:</label
+      >
       <input
         type="text"
         id="name"
         placeholder="Enter your name"
         style="
           width: 100%;
-          padding: 10px;
-          border-radius: 5px;
+          padding: 12px;
+          border-radius: 8px;
           border: 1px solid #ddd;
-          margin-bottom: 10px;
+          margin-bottom: 15px;
+          font-size: 16px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         "
       />
 
-      <!-- Gender Selection -->
-      <div class="gender-container">
-        <label>Gender:</label><br />
-        <input
-          type="radio"
-          id="male"
-          name="gender"
-          value="Male"
-          onchange="checkInputs()"
-        />
-        <label for="male">Male</label>
-        <input
-          type="radio"
-          id="female"
-          name="gender"
-          value="Female"
-          onchange="checkInputs()"
-        />
-        <label for="female">Female</label>
+      <!-- Gender Selection (Now in one line) -->
+      <div
+        class="gender-container"
+        style="text-align: left; margin-bottom: 20px"
+      >
+        <label style="font-weight: 600; margin-bottom: 8px">Gender:</label
+        ><br />
+        <label style="margin-right: 15px">
+          <input
+            type="radio"
+            id="male"
+            name="gender"
+            value="Male"
+            onchange="checkInputs()"
+            style="margin-right: 8px"
+          />
+          Male
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="Female"
+            onchange="checkInputs()"
+            style="margin-right: 8px"
+          />
+          Female
+        </label>
       </div>
 
-      <label style="font-size: 14px; color: #555; margin-bottom: 10px"
-        >Share your thoughts (Optional)</label
+      <!-- Feedback Section -->
+      <label
+        for="user-feedback"
+        style="
+          display: block;
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 5px;
+          text-align: left;
+        "
       >
+        Share your thoughts on tshirt design and feel. (Optional)
+      </label>
       <textarea
         id="user-feedback"
         rows="4"
         placeholder="Share your feedback"
         style="
           width: 100%;
-          padding: 10px;
+          padding: 12px;
           border: 1px solid #ccc;
-          border-radius: 5px;
+          border-radius: 8px;
           margin-bottom: 20px;
+          font-size: 15px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          resize: vertical;
         "
       ></textarea>
 
-      <button id="submit-feedback" disabled>
+      <!-- Submit Button -->
+      <button
+        id="submit-feedback"
+        style="
+          background-color: #4caf50;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          width: 100%;
+          opacity: 0.5;
+          transition: opacity 0.3s ease;
+          pointer-events: none; /* Disabled state */
+        "
+        disabled
+      >
         Submit Selections and Feedback
       </button>
 
-      <div class="thank-you-message" id="thank-you">
+      <!-- Thank You Message -->
+      <div
+        class="thank-you-message"
+        id="thank-you"
+        style="display: none; margin-top: 20px; color: #4caf50; font-size: 18px"
+      >
         Thank you for your feedback and selections!
       </div>
     </div>
@@ -326,6 +408,11 @@
       const feedbackForm = document.getElementById("feedback-form");
       const carouselContainer = document.getElementById("carousel-container");
       const responses = []; // To store responses
+
+      document.addEventListener("DOMContentLoaded", () => {
+        showTshirt(currentTshirt); // Ensure first T-shirt is shown
+        priceOptions.style.display = "none"; // Hide price options initially
+      });
 
       function showTshirt(index) {
         tshirts.forEach((tshirt, i) => {
@@ -400,22 +487,24 @@
             feedback: userFeedback,
           };
 
-          fetch("https://script.google.com/macros/s/AKfycbyI84Xr1QLkEPgH4RxEkQ_Uk8dotMNOUqxfAx3BoJk5lSjJxm8xOksbUPKGFvqI_dk/exec", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((response) => response.text())
+          fetch(
+            "https://dynamic-croquembouche-427cf3.netlify.app/.netlify/functions/feedback4tee",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          )
+            .then((response) => response.json())
             .then((data) => {
-              alert("Your feedback has been submitted!");
-              console.log('Submitted')
-              document.getElementById("thank-you").style.display = "block";
-              document.getElementById("feedback-form").style.display = "none";
+              console.log("Success:", data);
             })
-            .catch((error) => console.error("Error:", error));
-
+            .catch((error) => {
+              console.error("Error:", error);
+            });
           // Show thank you message
           document.getElementById("thank-you").style.display = "block";
           feedbackForm.style.display = "none"; // Hide feedback form after submission
