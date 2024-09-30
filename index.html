@@ -25,8 +25,8 @@
 
       .form-container {
         background-color: #fff;
-        padding: 20px;
-        border-radius: 15px;
+        /* padding:  */
+        padding-top: 10px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         text-align: center;
         position: relative;
@@ -35,16 +35,19 @@
       }
 
       h1 {
-        margin-bottom: 15px;
         font-size: 1.5em;
         color: #000;
       }
-
+      .form-container p{
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+      }
       .tshirt-carousel {
         display: flex;
         justify-content: center;
         overflow: hidden;
         margin-bottom: 20px;
+
       }
 
       .tshirt {
@@ -59,28 +62,32 @@
 
       .tshirt img {
         width: 100%;
-        max-width: 250px;
+        max-width:400px;
         height: auto;
-        border-radius: 12px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
       .swipe-buttons {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         margin-bottom: 20px;
-        padding: 0 10px;
+        padding:0px;
       }
 
       .swipe-buttons button {
-        padding: 12px 20px;
+        padding: 10px;
+        flex: 1;
         cursor: pointer;
         background-color: #007bff;
         color: white;
         border: none;
-        border-radius: 8px;
+        height: 50px;
         font-size: 1rem;
         transition: background-color 0.3s ease;
+      }
+      .line-vertical-white{
+        background-color: white;
+        width: 5px;
       }
 
       .swipe-buttons button:hover {
@@ -171,6 +178,7 @@
   <body>
     <div class="form-container" id="carousel-container">
       <h1>Outrage T-shirt</h1>
+      <p>Speak Out Speak Loud</p>
 
       <!-- T-shirt Image Carousel -->
       <div class="tshirt-carousel">
@@ -237,9 +245,11 @@
       </div>
 
       <!-- Swipe Buttons -->
+      <p style="margin-bottom: 10px;">Would you buy this tshirt ?</p>
       <div class="swipe-buttons">
-        <button id="swipe-left">Swipe Left (No)</button>
-        <button id="swipe-right">Swipe Right (Yes)</button>
+        <button id="swipe-left">Never</button>
+        <span class="line-vertical-white"></span>
+        <button id="swipe-right">Yes</button>
       </div>
 
       <!-- Price and Decision Options -->
@@ -391,6 +401,47 @@
         Submit Selections and Feedback
       </button>
 
+      <div id="loading-spinner" style="display: none">
+        <div
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background overlay */
+            backdrop-filter: blur(5px); /* Apply blur effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* High z-index to ensure it overlays the form */
+          "
+        >
+          <div
+            style="
+              border: 4px solid #f3f3f3;
+              border-top: 4px solid #007bff;
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              animation: spin 1s linear infinite;
+            "
+          ></div>
+        </div>
+      </div>
+      
+      <style>
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      
+
       <!-- Thank You Message -->
       <div
         class="thank-you-message"
@@ -472,20 +523,15 @@
           const name = document.getElementById("name").value;
           const gender = document.querySelector('input[name="gender"]:checked');
 
-          // Log the data to console
-          // console.log({
-          //   selections: responses,
-          //   feedback: userFeedback,
-          //   name: name,
-          //   gender: gender ? gender.value : "Not specified",
-          // });
-
           const data = {
             selections: responses,
             name: name,
             gender: gender ? gender.value : "Not specified",
             feedback: userFeedback,
           };
+
+          // Show the loading spinner
+          document.getElementById("loading-spinner").style.display = "block";
 
           fetch(
             "https://dynamic-croquembouche-427cf3.netlify.app/.netlify/functions/feedback4tee",
@@ -500,16 +546,18 @@
           )
             .then((response) => response.json())
             .then((data) => {
-              // console.log("Success:", data);
-              alert('Form has been submitted successfully, Thankyou.')
+              alert("Form has been submitted successfully, Thank you.");
+              document.getElementById("thank-you").style.display = "block";
+              feedbackForm.style.display = "none"; // Hide feedback form after submission
             })
             .catch((error) => {
               console.error("Error:", error);
-              alert('Something went wrong, try again later....');
+              alert("Something went wrong, try again later....");
+            })
+            .finally(() => {
+              // Hide the loading spinner
+              document.getElementById("loading-spinner").style.display = "none";
             });
-          // Show thank you message
-          document.getElementById("thank-you").style.display = "block";
-          feedbackForm.style.display = "none"; // Hide feedback form after submission
         });
 
       function checkInputs() {
